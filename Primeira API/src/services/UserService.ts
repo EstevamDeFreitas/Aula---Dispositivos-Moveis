@@ -13,8 +13,8 @@ class UserService{
         return UserService.currentInstance;
     }
 
-    getUser(email : string){
-        return this.users.find(x => x.email === email);
+    getUser(id : number){
+        return this.users.find(x => x.id == id);
     }
     
     getAllUsers(){
@@ -22,7 +22,7 @@ class UserService{
     }
 
     updateUser(user : User){
-        let index = this.users.findIndex(x => x.email === user.email);
+        let index = this.users.findIndex(x => x.id === user.id);
 
         if(index < 0){
             return;
@@ -31,11 +31,18 @@ class UserService{
         this.users[index].admin = user.admin;
         this.users[index].name = user.name;
         this.users[index].password = user.password;
+        this.users[index].email = user.email;
 
         
     }
 
     addUser(user : User){
+        if(this.users.length == 0){
+            user.id = 0
+        }
+        else{
+            user.id = this.users[this.users.length - 1].id + 1;
+        }
         this.users.push(user);
     }
 
@@ -47,11 +54,13 @@ class UserService{
 }
 
 class User{
+    id : number;
     name : string;
     email : string;
     admin : boolean;
     password : string;
-    constructor(name:string, email : string, admin:boolean, password : string){
+    constructor(id : number, name:string, email : string, admin:boolean, password : string){
+        this.id = id;
         this.name = name;
         this.email = email;
         this.admin = admin;

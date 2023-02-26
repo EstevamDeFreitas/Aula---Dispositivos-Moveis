@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserService, User } from "../services/UserService";
+import { UserService, User } from "../../services/UserService";
 
 class RemoveUserController{
     async handle(request : Request, response : Response){

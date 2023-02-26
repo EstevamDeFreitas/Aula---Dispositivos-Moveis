@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { CreateUserController } from "./controllers/CreateUserController";
-import { ListUserController } from "./controllers/ListUserController";
-import { UpdateUserController } from "./controllers/UpdateUserController";
-import { RemoveUserController } from "./controllers/RemoveUserController";
+import { CreateUserController } from "./controllers/User/CreateUserController";
+import { ListUserController } from "./controllers/User/ListUserController";
+import { UpdateUserController } from "./controllers/User/UpdateUserController";
+import { RemoveUserController } from "./controllers/User/RemoveUserController";
 
 const createUserController  = new CreateUserController();
 const listUserController = new ListUserController();
