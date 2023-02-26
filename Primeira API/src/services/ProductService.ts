@@ -61,3 +61,5 @@ class Product{
     price : number = 0;
     url : string = "";
 }
+
+export{Product, ProductService}
