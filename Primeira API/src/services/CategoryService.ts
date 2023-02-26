@@ -14,15 +14,15 @@ class CategoryService{
         return CategoryService.currentInstance;
     }
 
-    getCategory(id : number){
+    getById(id : number){
         return this.categories.find(x => x.id = id);
     }
 
-    getAllCategories(){
+    getAll(){
         return this.categories;
     }
 
-    addCategory(category : Category){
+    add(category : Category){
         if(this.categories.length == 0){
             category.id = 0
         }
@@ -32,7 +32,7 @@ class CategoryService{
         this.categories.push(category);
     }
 
-    updateCategory(category : Category){
+    update(category : Category){
         let index = this.categories.findIndex(x => x.id == category.id);
 
         if(index < 0){
@@ -42,7 +42,7 @@ class CategoryService{
         this.categories[index].name = category.name;
     }
 
-    removeCategory(id : number){
+    remove(id : number){
         let index = this.categories.findIndex(x => x.id == id);
 
         this.categories.splice(index, 1);
