@@ -61,3 +61,5 @@ class Sale{
     desc : string = "";
     obs: string = "";
 }
+
+export {Sale, SaleService}
