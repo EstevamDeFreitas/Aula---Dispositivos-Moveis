@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
+import { DeleteUserService } from "../../services/User/DeleteUserService";
 import { UserService, User } from "../../services/UserService";
 
 class RemoveUserController{
     async handle(request : Request, response : Response){
-        const userEmail : string = request.params.email;
+        const userid : string = request.params.id;
 
-        const userService = UserService.getService();
+        const removeUserService = new DeleteUserService();
 
-        return response.json(userService.removeUser(userEmail));
+        removeUserService.execute({id : userid});
+
+        return response.json(userid);
     }
 }
 
