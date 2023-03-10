@@ -15,6 +15,9 @@ import { CreateSaleController } from "./controllers/Sales/CreateSaleController";
 import { ListSaleController } from "./controllers/Sales/ListSaleController";
 import { RemoveSaleController } from "./controllers/Sales/RemoveSaleController";
 import { UpdateSaleController } from "./controllers/Sales/UpdateSaleController";
+import { AuthenticateUserController } from "./controllers/Auth/AuthenticateUserController";
+import { ensureAdmin } from "./middleware/ensureAdmin";
+import { ensureAuthenticated } from "./middleware/EnsureAuthentication";
 
 const createUserController  = new CreateUserController();
 const listUserController = new ListUserController();
@@ -36,10 +39,16 @@ const listSaleController = new ListSaleController();
 const updateSaleController = new UpdateSaleController();
 const removeSaleController = new RemoveSaleController();
 
+const authUserController = new AuthenticateUserController();
+
 
 const router = Router();
 
+router.post("/login", authUserController.handle);
 router.post("/users", createUserController.handle);
+
+router.use(ensureAuthenticated);
+
 router.get("/users", listUserController.handle);
 router.put("/users", updateUserController.handle);
 router.delete("/users/:email", removeUserController.handle);
