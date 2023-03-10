@@ -11,7 +11,7 @@ class RemoveCategoryController{
 
         const deleteCategoryService = new DeleteCategoryService();
 
-        const result = deleteCategoryService.execute({id : categoryId});
+        const result = await deleteCategoryService.execute({id : categoryId});
 
         return response.json(result);
     }

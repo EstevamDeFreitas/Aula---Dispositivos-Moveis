@@ -11,7 +11,7 @@ class UpdateCategoryController{
 
         const updateCategoryService = new UpdateCategoryService();
 
-        const result = updateCategoryService.execute(category);
+        const result = await updateCategoryService.execute(category);
 
         return response.json(category);
     }
